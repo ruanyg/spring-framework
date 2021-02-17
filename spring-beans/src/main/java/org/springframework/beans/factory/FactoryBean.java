@@ -56,6 +56,7 @@ import org.springframework.lang.Nullable;
  * @see org.springframework.aop.framework.ProxyFactoryBean
  * @see org.springframework.jndi.JndiObjectFactoryBean
  */
+// 可以让我们⾃定义Bean的创建过程（完成复杂Bean的定义）
 public interface FactoryBean<T> {
 
 	/**
@@ -75,6 +76,7 @@ public interface FactoryBean<T> {
 	 * @throws Exception in case of creation errors
 	 * @see FactoryBeanNotInitializedException
 	 */
+	// 返回FactoryBean创建的Bean实例，如果isSingleton返回true，则该实例会放到Spring容器的单例对象缓存池中Map
 	@Nullable
 	T getObject() throws Exception;
 
@@ -97,6 +99,7 @@ public interface FactoryBean<T> {
 	 * or {@code null} if not known at the time of the call
 	 * @see ListableBeanFactory#getBeansOfType
 	 */
+	// 返回FactoryBean创建的Bean类型
 	@Nullable
 	Class<?> getObjectType();
 
@@ -125,6 +128,7 @@ public interface FactoryBean<T> {
 	 * @see #getObject()
 	 * @see SmartFactoryBean#isPrototype()
 	 */
+	// 返回作⽤域是否单例
 	default boolean isSingleton() {
 		return true;
 	}
